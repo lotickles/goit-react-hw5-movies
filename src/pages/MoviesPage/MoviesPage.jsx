@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { fetchMovieByQuery } from 'services/API';
 import { SearchBar } from '../../components/SearchBar/SearchBar';
@@ -10,7 +10,7 @@ const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [movieName, setMovieName] = useState('');
 
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
   const updateQueryString = query => {
     const nextParams = query !== '' ? { query } : {};
@@ -22,13 +22,13 @@ const MoviesPage = () => {
     setMovieName(movieName);
     (async () => {
       try {
-        setIsLoading(true);
+        // setIsLoading(true);
         const movies = await fetchMovieByQuery(movieName);
         setSearchResults(movies);
       } catch (error) {
         console.error('Error fetching movies:', error);
       } finally {
-        setIsLoading(false);
+        // setIsLoading(false);
       }
     })();
   }, [searchParams]);
@@ -36,13 +36,20 @@ const MoviesPage = () => {
   return (
     <>
       <SearchBar value={movieName} onChange={updateQueryString} />
-      {isLoading ? (
+      {/* {isLoading ? (
         <Loader />
       ) : searchResults?.length > 0 ? (
         <MovieList movies={searchResults} />
       ) : (
         <h2>Nothing found! Please try again</h2>
-      )}
+      )} */}
+      <Suspense fallback={<Loader />}>
+        {searchResults?.length > 0 ? (
+          <MovieList movies={searchResults} />
+        ) : (
+          <h2>Nothing found! Please try again</h2>
+        )}
+      </Suspense>
     </>
   );
 };
