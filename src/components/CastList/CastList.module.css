@@ -1,0 +1,10 @@
+.castList {
+  padding-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  .name {
+    margin-right: 10px;
+    font-size: larger;
+    font-weight: bold;
+  }
+}

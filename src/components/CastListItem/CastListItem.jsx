@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import css from './CastListItem.module.css';
 
+
 export const CastListItem = ({ profilePath, originalName, name }) => {
   return (
     <li className={css.classListItem}>

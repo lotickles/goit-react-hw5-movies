@@ -1,16 +1,14 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-
-// import { Reviews } from './Reviews/Reviews';
-
-// lazy load should be a default export
 const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout'));
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const MoviesPage = lazy(() => import('pages/MoviesPage/MoviesPage'));
 const MovieDetailsPage = lazy(() =>
   import('pages/MovieDetailsPage/MovieDetailsPage')
 );
-// const Reviews = lazy(() => import('./Reviews/Reviews'));
+const CastList = lazy(() => import('./CastList/CastList'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
+const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
 export const App = () => {
   return (
@@ -20,13 +18,12 @@ export const App = () => {
         <Route path="movies">
           <Route index element={<MoviesPage />} />
           <Route path=":movieId" element={<MovieDetailsPage />}>
-            {/* <Route path="cast" element={<CastList />} />
-            <Route path="reviews" element={<ReviewsList />} /> */}
+            <Route path="cast" element={<CastList />} />
+            <Route path="reviews" element={<Reviews />} />
           </Route>
         </Route>
-
-        {/* <Route path="reviews" element={<Reviews />} /> */}
       </Route>
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };

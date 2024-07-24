@@ -1,10 +1,10 @@
-import { PacmanLoader } from 'react-spinners';
+import { PulseLoader } from 'react-spinners';
 // import css from './Loader.module.css';
 
 export const Loader = () => {
   return (
     // <div className={css.loaderWrap}>
-    <PacmanLoader color="#36d7b7" />
+    <PulseLoader color="#13c8e8" />
     // </div>
   );
 };

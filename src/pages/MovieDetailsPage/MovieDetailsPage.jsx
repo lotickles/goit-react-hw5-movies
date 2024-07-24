@@ -1,16 +1,12 @@
-import { useEffect, useState } from 'react';
-import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
+import { useEffect, useState, Suspense } from 'react';
+import { useParams, Link, Outlet } from 'react-router-dom';
 import { fetchMovieDetails } from '../../services/API';
-import { Button } from 'components/Button/Button';
 import { Loader } from 'components/Loader/Loader';
-// import { Link } from 'react-router-dom';
 import css from './MovieDetailPage.module.css';
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
-  const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
 
   useEffect(() => {
     (async () => {
@@ -39,16 +35,14 @@ const MovieDetailsPage = () => {
 
   return (
     <>
-      <Link to={backLinkHref}>
-        <Button text="<- Go Back" />
-      </Link>
+      <Link to={-1}>Go Back</Link>
       <div className={css.Container}>
         <img
           width="300px"
           src={
             poster_path
               ? `https://image.tmdb.org/t/p/w500${poster_path}`
-              : `https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg`
+              : `https://fakeimg.pl/600x400?text=No+Image+Available`
           }
           alt={original_title}
         />
@@ -68,6 +62,7 @@ const MovieDetailsPage = () => {
         </div>
       </div>
       <hr />
+
       <div>
         <h3>Additional information</h3>
         <ul className={css.ListInfo}>
@@ -75,11 +70,15 @@ const MovieDetailsPage = () => {
             <Link to="cast">Cast</Link>
           </li>
           <li>
-            <Link to="reviews">Reviews</Link>
+            <Link to="reviews" preventScrollReset={true}>
+              Reviews
+            </Link>
           </li>
         </ul>
         <hr />
-        <Outlet />
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
       </div>
     </>
   );

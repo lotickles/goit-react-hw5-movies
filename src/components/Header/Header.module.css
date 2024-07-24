@@ -1,6 +1,6 @@
 /* Header.module.css */
 .header {
-  background-color: #f0f0f0;
+  background-color: #00bcd461;
   padding: 20px;
 }
 
@@ -16,6 +16,6 @@
 }
 
 .linkActive {
-  color: red;
+  color: rgb(2, 35, 80);
   font-weight: 700;
 }

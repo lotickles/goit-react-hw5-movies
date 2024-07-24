@@ -29,23 +29,20 @@
   font-size: 18px;
   color: #191d1e;
   &:hover {
-    color: tomato;
+    color: rgb(49, 97, 231);
   }
 }
 
-Button {
-  padding: 8px 8px;
+/* Button {
+  padding: 10px 20px;
   font: inherit;
   cursor: pointer;
-  border-radius: 4px;
-  border: 3px solid #191d1e;
-  color: #191d1e;
+  border: 2px solid hsl(193, 74%, 7%);
+  color: #27515c;
   font-weight: 600;
   font-size: 20px;
-  border-radius: 4px 8px;
 
   &:hover {
     color: tomato;
     border: 3px solid tomato;
-  }
-}
+  } */

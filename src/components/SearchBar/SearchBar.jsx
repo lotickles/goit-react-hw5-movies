@@ -10,7 +10,6 @@ export const SearchBar = ({ onChange, value }) => {
 
   return (
     <div className={css.inputWrapper}>
-      <HiSearch className={css.searchIcon} />
       <DebounceInput
         className={css.input}
         value={value}
@@ -20,6 +19,7 @@ export const SearchBar = ({ onChange, value }) => {
         placeholder={'Search Movies...'}
         onChange={handleChange}
       />
+      <HiSearch className={css.searchIcon} />
     </div>
   );
 };

@@ -1,7 +1,9 @@
+import css from './Footer.module.css';
+
 export const Footer = () => {
   return (
-    <div className="footer">
-      <p>&copy;2024 My Movie App. All rights reserved.</p>
+    <div className={css.footer}>
+      <p>Movie App by Marylou Martirez &copy;2024 .</p>
     </div>
   );
 };

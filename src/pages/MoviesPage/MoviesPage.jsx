@@ -46,8 +46,10 @@ const MoviesPage = () => {
       <Suspense fallback={<Loader />}>
         {searchResults?.length > 0 ? (
           <MovieList movies={searchResults} />
-        ) : (
+        ) : movieName ? (
           <h2>Nothing found! Please try again</h2>
+        ) : (
+          ''
         )}
       </Suspense>
     </>

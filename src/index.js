@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { App } from './components/App';
 import { Loader } from 'components/Loader/Loader';
 import { ErrorBoundary } from 'react-error-boundary';
-// import 'modern-normalize';
+import 'index.css';
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
